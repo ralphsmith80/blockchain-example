@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-const { IncomingMessage } = require('http');
 
 class Block {
   constructor(index, timestamp, data, previousHash = '') {
