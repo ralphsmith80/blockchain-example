@@ -17,5 +17,7 @@
     "url": "https://github.com/ralphsmith80/blockchain-example/issues"
   },
   "homepage": "https://github.com/ralphsmith80/blockchain-example#readme",
-  "dependencies": {}
+  "dependencies": {
+    "elliptic": "^6.5.3"
+  }
 }
