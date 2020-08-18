@@ -106,7 +106,11 @@ class Blockchain {
     this.pendingTransactions.push(rewardTx);
 
     const timestamp = new Date().toUTCString();
-    let block = new Block(timestamp, this.pendingTransactions);
+    let block = new Block(
+      timestamp,
+      this.pendingTransactions,
+      this.getLatestBlock().hash
+    );
     block.mineBlock(this.difficulty);
 
     console.log('Block successfully mined!');
