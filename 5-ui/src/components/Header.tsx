@@ -41,6 +41,14 @@ export default function Header() {
           <Button
             color="inherit"
             component={RouterLink}
+            to="/pending-transactions"
+            variant="outlined"
+          >
+            Pending Transactions
+          </Button>
+          <Button
+            color="inherit"
+            component={RouterLink}
             to="/settings"
             variant="outlined"
           >

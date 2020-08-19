@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import Block from 'components/Block';
@@ -19,14 +19,8 @@ type BlockchainProps = {
 
 const Blockchain: React.FC<BlockchainProps> = ({ blockchainService }) => {
   const classes = useStyles();
-  const [blocks, setBlocks] = useState([]);
-  const [selectedBlock, setSelectedBlock] = useState<any>();
-
-  useEffect(() => {
-    const blocks = blockchainService.getBlocks();
-    setBlocks(blocks);
-    setSelectedBlock(blocks[0]);
-  }, [blockchainService]);
+  const blocks: [any] = blockchainService.getBlocks();
+  const [selectedBlock, setSelectedBlock] = useState<any>(blocks[0]);
 
   return (
     <>
@@ -35,10 +29,7 @@ const Blockchain: React.FC<BlockchainProps> = ({ blockchainService }) => {
           <Block
             block={block}
             key={i}
-            onClick={() => {
-              console.log('click');
-              setSelectedBlock(block);
-            }}
+            onClick={() => setSelectedBlock(block)}
           />
         ))}
       </section>

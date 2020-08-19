@@ -21,7 +21,7 @@ export class BlockchainService {
   }
 
   getPendingTransactions() {
-    return this.blockchainInstance.getPendingTransactions;
+    return this.blockchainInstance.pendingTransactions;
   }
 
   minePendingTransactions() {

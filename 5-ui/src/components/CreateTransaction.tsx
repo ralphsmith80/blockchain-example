@@ -65,12 +65,13 @@ const CreateTransaction: React.FC<CreateTransactionProps> = ({
         <Button
           color="primary"
           onClick={(evt) => {
-            evt.preventDefault();
-
             const tx = new Transaction(fromAddress, toAddress, amount);
+
+            evt.preventDefault();
 
             tx.signTransaction(walletKey.keyObj);
             blockchainService.addTransaction(tx);
+
             // INFO: reset UI
             setToAddress('');
             setAmount('');

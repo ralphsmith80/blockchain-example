@@ -5,6 +5,7 @@ import Header from 'components/Header';
 import Blockchain from 'components/Blockchain';
 import Settings from 'components/Settings';
 import CreateTransaction from 'components/CreateTransaction';
+import PendingTransactions from 'components/PendingTransactions';
 import { BlockchainService } from 'services/blockchain.service';
 
 const blockchainService = new BlockchainService();
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route path="/create-transaction">
               <CreateTransaction blockchainService={blockchainService} />
+            </Route>
+            <Route path="/pending-transactions">
+              <PendingTransactions blockchainService={blockchainService} />
             </Route>
             <Route path="/">
               <Blockchain blockchainService={blockchainService} />

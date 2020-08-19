@@ -18,14 +18,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type TransactionsProps = {
+  className?: string;
   transactions?: any;
 };
 
-const TransactionsTable: React.FC<TransactionsProps> = ({ transactions }) => {
+const TransactionsTable: React.FC<TransactionsProps> = ({
+  transactions,
+  ...rest
+}) => {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper} variant="outlined">
+    <TableContainer component={Paper} variant="outlined" {...rest}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -58,7 +62,7 @@ const TransactionsTable: React.FC<TransactionsProps> = ({ transactions }) => {
                     </Typography>
                   </>
                 ) : (
-                  transactions.amount
+                  transaction.amount
                 )}
               </TableCell>
               <TableCell>
