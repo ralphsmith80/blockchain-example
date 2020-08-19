@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from 'components/Header';
 import Blockchain from 'components/Blockchain';
 import Settings from 'components/Settings';
+import CreateTransaction from 'components/CreateTransaction';
 import { BlockchainService } from 'services/blockchain.service';
 
 const blockchainService = new BlockchainService();
@@ -25,6 +26,9 @@ function App() {
           <Switch>
             <Route path="/settings">
               <Settings blockchain={blockchainService.blockchainInstance} />
+            </Route>
+            <Route path="/create-transaction">
+              <CreateTransaction blockchainService={blockchainService} />
             </Route>
             <Route path="/">
               <Blockchain blockchainService={blockchainService} />

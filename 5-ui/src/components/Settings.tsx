@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { TextField } from '@material-ui/core';
+import { TextField, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-  blockSection: {
-    display: 'flex',
-  },
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(2),
+      margin: `${theme.spacing(2)}px 0`,
     },
-  },
-  section: {
-    marginBottom: theme.spacing(2),
   },
 }));
 
@@ -31,7 +25,10 @@ const Settings: React.FC<SettingsProps> = ({ blockchain }) => {
   }, [blockchain]);
 
   return (
-    <section className={`${classes.blockSection} ${classes.section}`}>
+    <section>
+      <Typography component="header" variant="h4">
+        Settings
+      </Typography>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           fullWidth

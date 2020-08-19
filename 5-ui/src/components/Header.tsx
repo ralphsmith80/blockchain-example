@@ -7,6 +7,11 @@ const useStyles = makeStyles((theme) => ({
   Toolbar: {
     justifyContent: 'space-between',
   },
+  nav: {
+    '& .MuiButton-root': {
+      marginLeft: theme.spacing(2),
+    },
+  },
 }));
 
 export default function Header() {
@@ -24,7 +29,15 @@ export default function Header() {
         >
           Jedi Coin
         </Link>
-        <nav>
+        <nav className={classes.nav}>
+          <Button
+            color="inherit"
+            component={RouterLink}
+            to="/create-transaction"
+            variant="outlined"
+          >
+            Create Transaction
+          </Button>
           <Button
             color="inherit"
             component={RouterLink}
