@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
@@ -12,7 +11,10 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   block: {
-    margin: theme.spacing(2),
+    marginLeft: theme.spacing(2),
+    '&:first-child': {
+      marginLeft: 0,
+    },
   },
   content: {
     overflow: 'hidden',
@@ -20,11 +22,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Block({ block }) {
+type BlockProps = {
+  block: any;
+  onClick(): void;
+};
+
+const Block: React.FC<BlockProps> = ({ block, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.block} variant="outlined">
+    <Card className={classes.block} variant="outlined" {...rest}>
       <CardHeader
         title={`Block ${block.previousHash === '0' ? '(Genesis block)' : ''}`}
       />
@@ -54,4 +61,5 @@ export default function Block({ block }) {
       </CardContent>
     </Card>
   );
-}
+};
+export default Block;

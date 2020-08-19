@@ -7,6 +7,7 @@ class Transaction {
     this.fromAddress = fromAddress;
     this.toAddress = toAddress;
     this.amount = amount;
+    this.timestamp = Date.now();
   }
   // INFO: add hash so we can sign the hash and not the data
   calculateHash() {
