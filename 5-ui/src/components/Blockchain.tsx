@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import { BlockchainService } from 'services/blockchain.service';
 import Block from 'components/Block';
 import TransactionsTable from 'components/TransactionsTable';
-
-const blockchainService = new BlockchainService();
 
 const useStyles = makeStyles((theme) => ({
   blockSection: {
@@ -16,7 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Blockchain() {
+type BlockchainProps = {
+  blockchainService: any;
+};
+
+const Blockchain: React.FC<BlockchainProps> = ({ blockchainService }) => {
   const classes = useStyles();
   const [blocks, setBlocks] = useState([]);
   const [selectedBlock, setSelectedBlock] = useState<any>();
@@ -25,7 +26,7 @@ export default function Blockchain() {
     const blocks = blockchainService.getBlocks();
     setBlocks(blocks);
     setSelectedBlock(blocks[0]);
-  }, []);
+  }, [blockchainService]);
 
   return (
     <>
@@ -53,4 +54,5 @@ export default function Blockchain() {
       </section>
     </>
   );
-}
+};
+export default Blockchain;

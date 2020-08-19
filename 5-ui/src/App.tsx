@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from 'components/Header';
 import Blockchain from 'components/Blockchain';
+import Settings from 'components/Settings';
+import { BlockchainService } from 'services/blockchain.service';
+
+const blockchainService = new BlockchainService();
 
 const useStyles = makeStyles((theme) => ({
   article: {
@@ -18,12 +22,13 @@ function App() {
       <>
         <Header />
         <article className={classes.article}>
-          <Route path="/">
-            <Blockchain />
-          </Route>
           <Switch>
-            <Route path="/about">About</Route>
-            <Route path="/users">Users</Route>
+            <Route path="/settings">
+              <Settings blockchain={blockchainService.blockchainInstance} />
+            </Route>
+            <Route path="/">
+              <Blockchain blockchainService={blockchainService} />
+            </Route>
           </Switch>
         </article>
       </>
