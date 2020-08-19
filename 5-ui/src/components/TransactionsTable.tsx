@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
+  TableCell: {
+    maxWidth: 200,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
 }));
 
 type TransactionsProps = {
@@ -47,12 +52,20 @@ const TransactionsTable: React.FC<TransactionsProps> = ({
               <TableCell component="th" scope="row">
                 {index}
               </TableCell>
-              <TableCell>
+              <TableCell
+                className={classes.TableCell}
+                title={transaction.fromAddress}
+              >
                 {transaction.fromAddress === null
                   ? 'Chain'
                   : transaction.fromAddress}
               </TableCell>
-              <TableCell>{transaction.toAddress}</TableCell>
+              <TableCell
+                className={classes.TableCell}
+                title={transaction.toAddress}
+              >
+                {transaction.toAddress}
+              </TableCell>
               <TableCell align="right">
                 {transaction.fromAddress === null ? (
                   <>
